@@ -18,7 +18,25 @@ class ItemService {
   }
 
   async get (query, index, count) {
-    let q = query || {};
+    let q = {};
+    if(query){
+      delete query.page;
+      delete query.count;
+      for(let key in query){
+        const keyname = key;
+        if(this.item.schema.paths[keyname].instance == 'ObjectID') {
+          q = {
+            [keyname]: query[key]
+          }
+        }else {
+          q = {
+            [keyname]: {$regex: query[key], $options: 'i'}
+          }
+        }
+
+      }
+    }
+
     let i = parseInt(index) || 0;
     let c = parseInt(count) || 10;
     try {

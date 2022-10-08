@@ -16,7 +16,7 @@ module.exports.createItem = async (req, res, next) => {
 
 module.exports.getAllItems = async (req, res, next) => {
     try {
-        let data = await itemSvc.get({}, req.query.page, req.query.count);
+        let data = await itemSvc.get(req.query, req.query.page, req.query.count);
         let responseBody = {
             ...{ message: "Items list"},
             ... data
