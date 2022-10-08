@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { checkSchema, validationResult, body } = require("express-validator");
-const { itemSchema } = require("../validations/items-validations");
+const { itemSchema } = require("../validations/items.validations");
 const { createItem, getAllItems, getItemById} = require('../controller/items.controller');
 
 /* GET list of items. */
