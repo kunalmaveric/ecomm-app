@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
   category: {
-    type: Schema.Types.Mixed,
+    type: Schema.Types.ObjectId,
     required: true,
   },
   title: {

@@ -26,7 +26,7 @@ module.exports.getAllItems = async (req, res, next) => {
         headers: {},
       };
       const categoryDetails = await axios(config);
-      data.list[i].category = categoryDetails.data;
+      data.list[i]._doc.category = categoryDetails.data;
     }
     let responseBody = {
       ...{ message: "Items list" },
