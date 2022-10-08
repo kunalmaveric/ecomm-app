@@ -1,16 +1,16 @@
 var express = require("express");
 var router = express.Router();
 const { checkSchema, validationResult, body } = require("express-validator");
-const { itemSchema } = require("../validations/items-validations");
-const { createItem, getAllItems, getItemById} = require('../controller/categories.controller');
+const { categorySchema } = require("../validations/category.validations");
+const { createCategory, getAllCategories, getCategoryById} = require('../controller/categories.controller');
 
 /* GET list of items. */
-router.get("/", getAllItems);
+router.get("/", getAllCategories);
 
 /* GET Item by Id. */
-router.get("/:id", getItemById);
+router.get("/:id", getCategoryById);
 
 /* Add New items. */
-router.post("/", checkSchema(itemSchema), createItem);
+router.post("/", checkSchema(categorySchema), createCategory);
 
 module.exports = router;
